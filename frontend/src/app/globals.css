@@ -1,49 +1,379 @@
+
+/* ==========================================
+   UniCompute - Lavender Purple Theme
+   Frontend: Next.js + TypeScript
+========================================== */
+
+/* 1. Global color variables */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --sidebar: #C8AEEF;
+  --primary: #7036B8;
+  --primary-hover: #854DCD;
+
+  --lavender: #C8AEEF;
+  --light-lavender: #E8D9FA;
+  --background: #FAF8FF;
+
+  --white: #FFFFFF;
+  --text: #30184D;
+  --muted: #665779;
+  --border: #E8DDF5;
+
+  --success: #16835B;
+  --warning: #A86708;
+  --danger: #D14343;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* 2. Global reset */
 
-html {
-  height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
   background: var(--background);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* 3. Main application layout */
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* 4. Sidebar */
+
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+
+  background: var(--sidebar);
+  color: var(--text);
+
+  padding: 28px 18px;
+
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+/* 5. UniCompute logo */
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px;
+  margin-bottom: 48px;
+}
+
+.sidebar-logo svg {
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.sidebar-logo h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
+/* 6. Sidebar navigation */
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  border-radius: 10px;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 16px;
+
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.menu-link svg {
+  flex-shrink: 0;
+}
+
+/* 7. Active Dashboard menu */
+
+.menu-item:first-child {
+  background: var(--primary);
+}
+
+.menu-item:first-child .menu-link {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* 8. Menu hover effects */
+
+.menu-item:not(:first-child):hover {
+  background: #B798E2;
+}
+
+.menu-item:first-child:hover {
+  background: var(--primary-hover);
+}
+
+.menu-item:not(:first-child) .menu-link {
+  opacity: 0.85;
+}
+
+/* Navigation keyboard focus */
+
+.sidebar a:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* 9. Mock HPC cluster status */
+
+.cluster-status {
+  margin-top: auto;
+  padding: 18px;
+
+  background: #59357B;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(48, 24, 77, 0.12);
+}
+
+.cluster-status p {
+  margin: 0 0 8px;
+
+  color: #B9F5DC;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cluster-status small {
+  color: #F0E7FC;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* 10. Main content area */
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+
+  padding: 48px;
+  background: var(--background);
+}
+
+.main-content h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+
+  margin: 0 0 14px;
+  line-height: 1.2;
+}
+
+.main-content p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* 11. Reusable white dashboard cards
+   Used in future milestones */
+
+.dashboard-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  padding: 24px;
+
+  box-shadow: 0 4px 16px rgba(48, 24, 77, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 24px rgba(48, 24, 77, 0.09);
+}
+
+/* 12. Reusable primary button */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 20px;
+
+  background: var(--primary);
+  color: var(--white);
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.primary-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.primary-button:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* 13. Responsive design */
+
+/* Tablets */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 230px;
+    padding: 24px 14px;
+  }
+
+  .sidebar-logo h2 {
+    font-size: 19px;
+  }
+
+  .main-content {
+    padding: 32px;
+  }
+}
+
+/* Mobile phones */
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .sidebar-logo {
+    margin-bottom: 20px;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .menu-link {
+    padding: 12px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .cluster-status {
+    display: none;
+  }
+
+  .main-content {
+    padding: 28px 20px;
+  }
+
+  .main-content h1 {
+    font-size: 28px;
+  }
+
+  .main-content p {
+    font-size: 14px;
+  }
+}
+
+/* Small mobile phones */
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 16px;
+  }
+
+  .sidebar-logo h2 {
+    font-size: 19px;
+  }
+
+  .menu-link {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .main-content {
+    padding: 22px 16px;
+  }
+
+  .main-content h1 {
+    font-size: 25px;
+  }
+
+  .dashboard-card {
+    padding: 18px;
+  }
+}
+
+/* Reduce animations for users who prefer
+   less movement */
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-item,
+  .dashboard-card,
+  .primary-button {
+    transition: none;
+  }
+
+  .dashboard-card:hover,
+  .primary-button:hover {
+    transform: none;
   }
 }
