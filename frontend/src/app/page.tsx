@@ -1,21 +1,6 @@
-
 import Sidebar from "@/components/Sidebar";
+import Hero from "@/components/Hero";
 
 export default function Home() {
-  return (
-    <div className="app-container">
-      {/* Sidebar navigation */}
-      <Sidebar />
-
-      {/* Main dashboard content */}
-      <main className="main-content">
-        <h1>Welcome to UniCompute!</h1>
-
-        <p>
-          Your High-Performance Computing workspace
-          for research and simulations.
-        </p>
-      </main>
-    </div>
-  );
+  return <div className="app-container"><Sidebar /><main className="dashboard-main"><Hero /></main></div>;
 }
