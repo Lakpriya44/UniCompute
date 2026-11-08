@@ -16,7 +16,7 @@ export default function AuthPage({ mode }: { mode: "login" | "register" }) {
       </header>
       <main id="auth-main" className={styles.main}>
         <aside className={styles.story} aria-label="Your research workspace">
-          <Image src="/images/unicompute-landing-background.jpeg" alt="" fill sizes="(max-width: 860px) 100vw, 50vw" className={styles.artwork} />
+          <Image src="/images/unicompute-landing-background.jpg" alt="" fill sizes="(max-width: 860px) 100vw, 50vw" className={styles.artwork} />
           <div className={styles.storyContent}>
             <span className={styles.eyebrow}><span /> BUILT FOR RESEARCHERS</span>
             <h2>Your next<br /> breakthrough<br /> <span>starts here.</span></h2>

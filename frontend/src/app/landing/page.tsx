@@ -18,7 +18,7 @@ import {
 import styles from "@/styles/landing.module.css";
 
 export const metadata: Metadata = {
-  title: "Power Your Research | UniCompute",
+  title: "Power Your Research",
   description:
     "Access university HPC resources, submit jobs, and manage computing workloads with UniCompute.",
 };

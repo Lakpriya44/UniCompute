@@ -73,8 +73,8 @@ export default function LandingBackdrop({ sources }: { sources: { src: string; t
   if (!onLanding) return null;
   return <>
     <div ref={host} className={styles.backdrop} aria-hidden="true" data-animate={active && sources.length === 0}>
-      <Image src="/images/unicompute-landing-background.jpeg" alt="" fill preload sizes="100vw" className={styles.poster} />
-      {useVideo && <video ref={video} className={`${styles.video} ${videoReady ? styles.videoReady : ""}`} autoPlay loop muted playsInline preload="none" poster="/images/unicompute-landing-background.jpeg" tabIndex={-1} disablePictureInPicture onPlaying={() => setVideoReady(true)} onError={() => setVideoFailed(true)}>{sources.map(source => <source key={source.src} {...source} />)}</video>}
+      <Image src="/images/unicompute-landing-background.jpg" alt="" fill preload sizes="100vw" className={styles.poster} />
+      {useVideo && <video ref={video} className={`${styles.video} ${videoReady ? styles.videoReady : ""}`} autoPlay loop muted playsInline preload="none" poster="/images/unicompute-landing-background.jpg" tabIndex={-1} disablePictureInPicture onPlaying={() => setVideoReady(true)} onError={() => setVideoFailed(true)}>{sources.map(source => <source key={source.src} {...source} />)}</video>}
       {sources.length === 0 && <div className={styles.circuitMotion}>
         <div className={styles.processorGlow} />
         <svg className={styles.traces} viewBox="0 0 1600 600" fill="none" preserveAspectRatio="xMidYMid slice" focusable="false">
