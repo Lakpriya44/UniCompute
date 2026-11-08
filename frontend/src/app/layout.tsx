@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import AppShell from "@/components/AppShell";
-import { HPCProvider } from "@/components/HPCProvider";
+import SiteLayout from "@/components/SiteLayout";
 import { Loading } from "@/components/ui";
 import "./globals.css";
 
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
-      <body><Suspense fallback={<Loading />}><HPCProvider><AppShell>{children}</AppShell></HPCProvider></Suspense></body>
+      <body><Suspense fallback={<Loading />}><SiteLayout>{children}</SiteLayout></Suspense></body>
     </html>
   );
 }
